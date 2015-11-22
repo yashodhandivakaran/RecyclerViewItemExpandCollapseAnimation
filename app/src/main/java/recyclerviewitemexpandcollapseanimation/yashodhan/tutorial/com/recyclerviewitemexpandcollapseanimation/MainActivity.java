@@ -2,16 +2,33 @@ package recyclerviewitemexpandcollapseanimation.yashodhan.tutorial.com.recyclerv
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import recyclerviewitemexpandcollapseanimation.yashodhan.tutorial.com.recyclerviewitemexpandcollapseanimation.adapter.RecyclerViewAdapter;
+import recyclerviewitemexpandcollapseanimation.yashodhan.tutorial.com.recyclerviewitemexpandcollapseanimation.helper.DividerItemDecoration;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getResources().
+                getDrawable(R.drawable.abc_list_divider_mtrl_alpha)));
+
+        adapter = new RecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
     }
 
 
